@@ -17,6 +17,7 @@ const Toolbar = ({}) => {
       });
     } catch (error) {}
     router.refresh();
+    setTask("");
   };
 
   return (

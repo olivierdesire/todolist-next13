@@ -4,14 +4,18 @@ import Task from "@/models/Task";
 
 export const PUT = connectRouteToDb(async (request, { params }) => {
   console.log(params.id);
-  const taskFound = await Task.findByIdAndUpdate(
-    params.id,
-    { isDone: true },
-    {
-      new: true,
-    }
-  );
-  return NextResponse.json(taskFound, { status: 200 });
+  try {
+    const taskFound = await Task.findByIdAndUpdate(
+      params.id,
+      { isDone: true },
+      {
+        new: true,
+      }
+    );
+    return NextResponse.json(taskFound, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
 });
 
 export const DELETE = connectRouteToDb(async (request, { params }) => {
