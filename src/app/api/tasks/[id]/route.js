@@ -20,6 +20,10 @@ export const PUT = connectRouteToDb(async (request, { params }) => {
 
 export const DELETE = connectRouteToDb(async (request, { params }) => {
   console.log(params.id);
-  await Task.findByIdAndDelete(params.id);
-  return NextResponse.json({ message: "Task deleted" }, { status: 200 });
+  try {
+    await Task.findByIdAndDelete(params.id);
+    return NextResponse.json({ message: "Task deleted" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
 });
