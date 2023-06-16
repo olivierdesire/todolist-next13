@@ -5,5 +5,4 @@ const toDoListSchema = new Schema({
   isDone: Boolean,
 });
 
-const Task = models.Task || model("Task", toDoListSchema);
-export default Task;
+export default models.Task || model("Task", toDoListSchema);

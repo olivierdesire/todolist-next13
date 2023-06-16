@@ -1,8 +1,9 @@
 import connectPageToDb from "@/utils/connectPageToDB";
-
-import Tasks from "@/components/Tasks";
 import Task from "@/models/Task";
+import Tasks from "@/components/Tasks";
 import Toolbar from "@/components/Toolbar";
+
+export const dynamic = "force-dynamic";
 
 const fetchTasks = async () => {
   try {
@@ -18,7 +19,7 @@ export default async function Home() {
   return (
     <main>
       {data.map((task) => {
-        return <Tasks />;
+        return <Tasks key={task._id} task={JSON.parse(JSON.stringify(task))} />;
       })}
       <Toolbar />
     </main>
