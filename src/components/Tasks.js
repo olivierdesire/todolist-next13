@@ -1,3 +1,5 @@
+"use client";
+
 const Task = () => {
   return <div>Task</div>;
 };

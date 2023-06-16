@@ -1,5 +1,6 @@
 import connectPageToDb from "@/utils/connectPageToDB";
 
+import Tasks from "@/components/Tasks";
 import Task from "@/models/Task";
 import Toolbar from "@/components/Toolbar";
 
@@ -13,11 +14,11 @@ const fetchTasks = async () => {
 
 export default async function Home() {
   const data = await fetchTasks();
-  console.log(data);
+
   return (
     <main>
       {data.map((task) => {
-        return <Task />;
+        return <Tasks />;
       })}
       <Toolbar />
     </main>
